@@ -1,12 +1,16 @@
 import Image from "next/image";
 import Script from "next/script";
-import InstagramEmbed from "./components/InstagramEmbed";
+// import InstagramEmbed from "./components/InstagramEmbed";
 import JuicerInstagram from "./components/JuicerInstagram";
 import ImageSlider from "./components/ImageSlider";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import { tournamentData } from "./data/tournamentData";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-linear-to-b from-gray-50 to-white">
+      <Navbar />
       {/* Header */}
       <header className="relative overflow-hidden bg-linear-to-r from-blue-700 via-blue-800 to-blue-900 text-white shadow-lg">
         <div className="absolute inset-0 opacity-30" aria-hidden="true">
@@ -28,8 +32,8 @@ export default function Home() {
           </div>
 
           <div className="mx-auto max-w-3xl backdrop-blur-sm bg-white/5 border border-white/10 rounded-2xl px-6 py-4 md:px-8 md:py-5 shadow-lg">
-            <h1 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">Lakeshore Volleyfest</h1>
-            <p className="text-base md:text-lg font-medium text-blue-50/90">April 25 &amp; 26, 2026 · Michigan</p>
+            <h1 className="text-4xl md:text-5xl font-bold tracking-wider mb-2" style={{ fontFamily: "var(--font-bebas-neue)" }}>Lakeshore Volleyfest</h1>
+            <p className="text-base md:text-lg font-medium text-blue-50/90">April 25 &amp; 26, 2026 · West Michigan</p>
           </div>
         </div>
       </header>
@@ -42,7 +46,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 mt-8">
           <Card
             title="Tournament Information"
-            link="https://lakeshorevolleyfest.com/tournament-information/"
+            link="/tournament-information"
           />
           <Card
             title="Schedule"
@@ -57,7 +61,7 @@ export default function Home() {
             link="https://lakeshorevolleyfest.com/tournament-information/spectator-information/"
           />
           <Card
-            title="2025 Locations"
+            title="Locations"
             link="https://lakeshorevolleyfest.com/tournament-information/locations/"
           />
           <Card
@@ -71,40 +75,40 @@ export default function Home() {
           <div>
             <div className="bg-white border-2 border-blue-200 rounded-xl shadow-xl p-8 md:p-12 mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-blue-900">
-            Lakeshore Volleyfest AAU Super Regional
+            {tournamentData.name}
           </h2>
           <p className="text-2xl font-semibold text-center text-blue-700 mb-6">
-            April 25 – 26, 2026
+            {tournamentData.dates}
           </p>
           <p className="text-center text-lg mb-8 text-gray-700">
-            <span className="font-semibold">Hosted by Inside Out VBC</span><br />
-            Muskegon, MI &amp; Grand Rapids, MI
+            <span className="font-semibold">Hosted by {tournamentData.hostedBy}</span><br />
+            {tournamentData.location}
           </p>
 
           <div className="max-w-3xl mx-auto space-y-3 mb-10">
             <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-blue-300 rounded-lg overflow-hidden">
               <div className="p-4 bg-blue-50 font-bold border-r-2 border-blue-300 text-blue-900">AGE GROUPS:</div>
-              <div className="p-4 bg-white text-black">11-18</div>
+              <div className="p-4 bg-white text-black">{tournamentData.ageGroups}</div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-blue-300 rounded-lg overflow-hidden">
               <div className="p-4 bg-blue-50 font-bold border-r-2 border-blue-300 text-blue-900">ENTRY FEE:</div>
-              <div className="p-4 bg-white text-black">$550.00 (13-18) $480.00 (11-12&apos;s)</div>
+              <div className="p-4 bg-white text-black">{tournamentData.entryFees.older.cost} ({tournamentData.entryFees.older.age}) {tournamentData.entryFees.younger.cost} ({tournamentData.entryFees.younger.age})</div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-blue-300 rounded-lg overflow-hidden">
               <div className="p-4 bg-blue-50 font-bold border-r-2 border-blue-300 text-blue-900">ENTRY DEADLINE:</div>
-              <div className="p-4 bg-white text-black">April 6, 2026 (POSTMARK)</div>
+              <div className="p-4 bg-white text-black">{tournamentData.entryDeadline}</div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-blue-300 rounded-lg overflow-hidden">
               <div className="p-4 bg-blue-50 font-bold border-r-2 border-blue-300 text-blue-900">REGISTRATION:</div>
-              <div className="p-4 bg-white text-black"><a href="https://advancedeventsystems.com/41019" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline transition-colors">www.advancedeventsystems.com</a></div>
+              <div className="p-4 bg-white text-black"><a href={tournamentData.registrationUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline transition-colors">{tournamentData.registrationDisplay}</a></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-blue-300 rounded-lg overflow-hidden">
               <div className="p-4 bg-blue-50 font-bold border-r-2 border-blue-300 text-blue-900">RULES:</div>
-              <div className="p-4 bg-white text-black">Tournament will follow current AAU Rules</div>
+              <div className="p-4 bg-white text-black">{tournamentData.rules}</div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-blue-300 rounded-lg overflow-hidden">
               <div className="p-4 bg-blue-50 font-bold border-r-2 border-blue-300 text-blue-900">ENTRY FEES PAYABLE TO:</div>
-              <div className="p-4 bg-white text-black">Inside Out Volleyball</div>
+              <div className="p-4 bg-white text-black">{tournamentData.entryFeesPayableTo}</div>
             </div>
           </div>
 
@@ -159,50 +163,7 @@ export default function Home() {
 
       <Script async src="//www.instagram.com/embed.js" />
 
-      {/* Footer */}
-      <footer className="bg-linear-to-r from-gray-900 via-gray-800 to-gray-900 text-white py-10">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-center items-center gap-8 mb-6">
-            <a
-              href="https://twitter.com/isovolleyball"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 hover:text-blue-400 transition-colors font-medium"
-            >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-              </svg>
-              Twitter
-            </a>
-            <a
-              href="https://www.facebook.com/Inside-Out-Volleyball-135756269807662/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 hover:text-blue-400 transition-colors font-medium"
-            >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-              </svg>
-              Facebook
-            </a>
-            <a
-              href="https://www.instagram.com/isovolleyball/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 hover:text-blue-400 transition-colors font-medium"
-            >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-              </svg>
-              Instagram
-            </a>
-          </div>
-          <p className="text-center text-sm text-gray-400">
-            © 2025 Lakeshore Volleyfest
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
@@ -211,8 +172,6 @@ function Card({ title, link }: { title: string; link: string }) {
   return (
     <a
       href={link}
-      target="_blank"
-      rel="noopener noreferrer"
       className="relative block bg-white border border-gray-200 rounded-xl p-8 shadow-md hover:shadow-2xl hover:scale-105 transition-all duration-300 text-center group overflow-hidden"
     >
       <div className="absolute inset-0 bg-linear-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
