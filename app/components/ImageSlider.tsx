@@ -3,13 +3,15 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
+const baseUrl = (process.env.NEXT_PUBLIC_SLIDER_BASE_URL || "https://volleyfest.blob.core.windows.net/frontpage-slider").replace(/\/$/, "");
+
 const slides = [
-  '/slider/IMG_0014.JPG',
-  '/slider/IMG_0022.JPG',
-  '/slider/IMG_0332.JPG',
-  '/slider/IMG_0625.JPG',
-  '/slider/IMG_9978.JPG',
-];
+  "IMG_0014.JPG",
+  "IMG_0022.JPG",
+  "IMG_0332.JPG",
+  "IMG_0625.JPG",
+  "IMG_9978.JPG",
+].map((name) => `${baseUrl}/${name}`);
 
 export default function ImageSlider() {
   const [current, setCurrent] = useState(0);
