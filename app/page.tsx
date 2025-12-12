@@ -50,7 +50,7 @@ export default function Home() {
           />
           <Card
             title="Schedule"
-            link="https://results.advancedeventsystems.com/event/PTAwMDAwMzY5MTY90/home"
+            link="/tournament-information#schedule"
           />
           <Card
             title="Hotel Information"
@@ -58,15 +58,15 @@ export default function Home() {
           />
           <Card
             title="Tickets/Admission"
-            link="https://lakeshorevolleyfest.com/tournament-information/spectator-information/"
+            link="https://insideout.iplextickets.com/"
           />
           <Card
             title="Locations"
-            link="https://lakeshorevolleyfest.com/tournament-information/locations/"
+            link="/locations"
           />
           <Card
             title="Livestream"
-            link="https://lakeshorevolleyfest.com/court-1-2-livestream/"
+            link="/livestream"
           />
         </div>
 

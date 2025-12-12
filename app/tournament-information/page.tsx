@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import WavesTable from "../components/WavesTable";
 import { tournamentData } from "../data/tournamentData";
 
 export default function TournamentInformation() {
@@ -39,18 +40,18 @@ export default function TournamentInformation() {
         {/* Quick Navigation Links */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
           <Link
-            href="#tournament-details"
+            href="#schedule"
             className="block p-4 bg-white border-2 border-blue-200 rounded-lg hover:shadow-lg hover:border-blue-400 transition-all text-center"
           >
-            <div className="text-lg font-bold text-blue-900 mb-1">Tournament Details</div>
-            <div className="text-sm text-gray-600">Dates, fees & entry info</div>
+            <div className="text-lg font-bold text-blue-900 mb-1">Schedule</div>
+            <div className="text-sm text-gray-600">Playing Waves & Schedule</div>
           </Link>
           <Link
-            href="#aau-information"
+            href="/locations"
             className="block p-4 bg-white border-2 border-blue-200 rounded-lg hover:shadow-lg hover:border-blue-400 transition-all text-center"
           >
-            <div className="text-lg font-bold text-blue-900 mb-1">AAU Information</div>
-            <div className="text-sm text-gray-600">Rules & requirements</div>
+            <div className="text-lg font-bold text-blue-900 mb-1">Locations</div>
+            <div className="text-sm text-gray-600">Playing Sites & Addresses</div>
           </Link>
           <Link
             href="#contact-information"
@@ -124,6 +125,28 @@ export default function TournamentInformation() {
               <div className="p-4 bg-blue-50 font-bold border-r-2 border-blue-300 text-blue-900">Entry Fees Payable To:</div>
               <div className="p-4 bg-white text-gray-800">{tournamentData.entryFeesPayableTo}</div>
             </div>
+          </div>
+        </section>
+
+        {/* Schedule Section */}
+        <section id="schedule" className="bg-white border-2 border-blue-200 rounded-xl shadow-xl p-8 mb-12 scroll-mt-20">
+          <h2 className="text-2xl md:text-3xl font-bold text-blue-900 mb-6">Schedule</h2>
+          <div className="space-y-4 text-gray-700">
+            <p>
+              View the latest court-by-court schedules and updates.
+            </p>
+            <a
+              href="https://results.advancedeventsystems.com/event/PTAwMDAwMzY5MTY90/home"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors"
+            >
+              2025 AES Results
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+            <WavesTable />
           </div>
         </section>
 
