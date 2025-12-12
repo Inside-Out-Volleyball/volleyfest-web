@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 const baseUrl = "https://volleyfest.blob.core.windows.net/frontpage-slider";
 
@@ -52,10 +53,12 @@ export default function ImageSlider() {
               index === current ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            <img
+            <Image
               src={slide}
               alt={`Slide ${index + 1}`}
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              priority={index === current}
             />
           </div>
         ))}
