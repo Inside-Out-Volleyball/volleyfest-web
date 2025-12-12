@@ -1,17 +1,16 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 
-const baseUrl = (process.env.NEXT_PUBLIC_SLIDER_BASE_URL || "https://volleyfest.blob.core.windows.net/frontpage-slider").replace(/\/$/, "");
+const baseUrl = "https://volleyfest.blob.core.windows.net/frontpage-slider";
 
 const slides = [
-  "IMG_0014.JPG",
-  "IMG_0022.JPG",
-  "IMG_0332.JPG",
-  "IMG_0625.JPG",
-  "IMG_9978.JPG",
-].map((name) => `${baseUrl}/${name}`);
+  `${baseUrl}/IMG_0014.JPG`,
+  `${baseUrl}/IMG_0022.JPG`,
+  `${baseUrl}/IMG_0332.JPG`,
+  `${baseUrl}/IMG_0625.JPG`,
+  `${baseUrl}/IMG_9978.JPG`,
+];
 
 export default function ImageSlider() {
   const [current, setCurrent] = useState(0);
@@ -53,12 +52,10 @@ export default function ImageSlider() {
               index === current ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            <Image
+            <img
               src={slide}
               alt={`Slide ${index + 1}`}
-              fill
-              className="object-cover"
-              priority={index === current}
+              className="w-full h-full object-cover"
             />
           </div>
         ))}
