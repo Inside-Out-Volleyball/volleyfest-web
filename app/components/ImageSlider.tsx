@@ -3,19 +3,17 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-const baseUrl = "https://volleyfest.blob.core.windows.net/frontpage-slider";
-
-const slides = [
-  `${baseUrl}/IMG_0014.JPG`,
-  `${baseUrl}/IMG_0022.JPG`,
-  `${baseUrl}/IMG_0332.JPG`,
-  `${baseUrl}/IMG_0625.JPG`,
-  `${baseUrl}/IMG_9978.JPG`,
-];
-
 export default function ImageSlider() {
+  const [slides, setSlides] = useState<string[]>([]);
   const [current, setCurrent] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
+
+  useEffect(() => {
+    fetch('/api/slider-images')
+      .then((res) => res.json())
+      .then((data) => setSlides(data.images || []))
+      .catch((err) => console.error('Failed to load slider images:', err));
+  }, []);
 
   useEffect(() => {
     if (!autoPlay) return;
@@ -25,7 +23,7 @@ export default function ImageSlider() {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [autoPlay]);
+  }, [autoPlay, slides]);
 
   const goToSlide = (index: number) => {
     setCurrent(index);
@@ -42,6 +40,14 @@ export default function ImageSlider() {
     setAutoPlay(false);
   };
 
+  if (slides.length === 0) {
+    return (
+      <div className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden shadow-xl bg-gray-100 flex items-center justify-center">
+        <p className="text-gray-500">Loading images...</p>
+      </div>
+    );
+  }
+
   return (
     <div className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden shadow-xl group">
       {/* Slides */}
@@ -57,8 +63,10 @@ export default function ImageSlider() {
               src={slide}
               alt={`Slide ${index + 1}`}
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
               className="object-cover"
-              priority={index === current}
+              priority={index === 0}
+              loading={index === 0 ? 'eager' : 'lazy'}
             />
           </div>
         ))}

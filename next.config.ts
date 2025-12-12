@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "volleyfest.blob.core.windows.net",
+        hostname: "2mtrfo5jo8mxmvit.public.blob.vercel-storage.com",
       },
     ],
   },

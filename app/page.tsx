@@ -25,6 +25,7 @@ export default function Home() {
                 src="/volleyfest-logo2.png"
                 alt="Lakeshore Volleyfest 2026"
                 fill
+                sizes="(max-width: 768px) 128px, 160px"
                 className="object-contain"
                 priority
               />
