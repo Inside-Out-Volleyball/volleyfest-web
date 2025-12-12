@@ -130,7 +130,7 @@ export default function TournamentInformation() {
 
         {/* Schedule Section */}
         <section id="schedule" className="bg-white border-2 border-blue-200 rounded-xl shadow-xl p-8 mb-12 scroll-mt-20">
-          <h2 className="text-2xl md:text-3xl font-bold text-blue-900 mb-6">Schedule</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-blue-900 mb-6">Schedule / Playing Waves</h2>
           <div className="space-y-4 text-gray-700">
             <p>
               View the latest court-by-court schedules and updates.
@@ -156,7 +156,7 @@ export default function TournamentInformation() {
 
           <div className="space-y-4 text-gray-700">
             <p>
-              The AAU Super Regional is a <strong>National AAU Sponsored Event</strong>. Winners in each age division will have all or part of their fee waived for AAU Nationals. The refund is a sliding scale based on 16 teams in each age group.
+              The AAU Super Regional is a <strong>National AAU Sponsored Event</strong>. Winners in each division (up to 4 divisions per age group) will have all or part of their fee waived for AAU Nationals. The Classic division winner will NOT be eligible. The refund is a sliding scale based on 16 teams in each age group.
             </p>
 
             <p>
@@ -174,11 +174,10 @@ export default function TournamentInformation() {
             </div>
 
             <p>
-              In order for PREMIER division winners to collect their reimbursement, the team must be registered for and compete in PREMIER division or a LOWER division at AAU Nationals. If the first place team has already won a free entry or does not accept the free entry, the free entry will go to the second place team.
+              Teams earning a free or discounted entry fee must contact volleyball@aausports.org before July 1st, 2026. Refund requests will not be accepted after July 1st, 2026. Winning teams WILL NOT automatically be refunded, nor will they be contacted by the National Office. Refunds will be issued after completion of the AAU National Tournament to teams who participated in the 2025 AAU National Tournament
             </p>
-
             <p>
-              If the entry deadline for AAU Nationals is prior to the AAU Super Regional, then winners who have entered and been accepted into the National Tournament will have their nationals entry fee refunded.
+              All teams must still enter the National Championships or Volleyball Festival by the entry deadline, regardless of the date of the Grand Prix or Super Regional. Spots will not be held for winning teams.
             </p>
           </div>
 

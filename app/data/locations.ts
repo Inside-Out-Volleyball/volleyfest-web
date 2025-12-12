@@ -21,7 +21,7 @@ export const locations: Location[] = [
   {
     name: "Grand Valley State University",
     courts: "37–44 (Fieldhouse and Rec Center)",
-    addressLines: ["1 Campus Drive", "Allendale, MI 49401"],
+    addressLines: ["4249 W Ravine Center Dr", "Allendale, MI 49401"],
     seatingAvailable: true,
     seatingText: "Bleachers – outside chairs are allowed as well",
     apparel: true,

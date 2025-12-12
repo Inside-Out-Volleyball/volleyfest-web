@@ -58,7 +58,7 @@ export default function Home() {
           />
           <Card
             title="Tickets/Admission"
-            link="https://insideout.iplextickets.com/"
+            link="https://iplexsports.com/event/dli94fTSUUPUj5ko"
           />
           <Card
             title="Locations"

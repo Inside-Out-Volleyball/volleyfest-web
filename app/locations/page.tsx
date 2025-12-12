@@ -110,12 +110,6 @@ export default function LocationsPage() {
             </div>
           ))}
         </div>
-
-        <div className="mt-10 text-sm text-gray-600">
-          <p>
-            Notes summarized from the official Locations page. Details may change; check onsite signage and staff for the latest information.
-          </p>
-        </div>
       </main>
 
       <Footer />
