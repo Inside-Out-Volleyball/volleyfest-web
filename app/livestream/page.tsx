@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
+import PageHeader from "@/app/components/PageHeader";
 import { livestreams } from "@/app/data/livestreams";
 
 export default function LivestreamPage() {
@@ -18,34 +18,10 @@ export default function LivestreamPage() {
   return (
     <div className="min-h-screen bg-linear-to-b from-gray-50 to-white">
       <Navbar />
-
-      {/* Header */}
-      <header className="relative overflow-hidden bg-linear-to-r from-blue-700 via-blue-800 to-blue-900 text-white shadow-lg">
-        <div className="absolute inset-0 opacity-30" aria-hidden="true">
-          <div className="absolute -left-20 top-[-10%] h-64 w-64 rounded-full bg-blue-400 blur-3xl"></div>
-          <div className="absolute right-[-5%] top-1/4 h-72 w-72 rounded-full bg-indigo-500 blur-3xl"></div>
-        </div>
-
-        <div className="relative max-w-6xl mx-auto px-4 py-6 md:py-8 text-center">
-          <div className="mx-auto mb-4 md:mb-5 flex justify-center">
-            <div className="relative w-32 h-32 md:w-40 md:h-40 drop-shadow-2xl">
-              <Image
-                src="/volleyfest-logo2.png"
-                alt="Lakeshore Volleyfest 2026"
-                fill
-                sizes="(max-width: 768px) 128px, 160px"
-                className="object-contain"
-                priority
-              />
-            </div>
-          </div>
-
-          <div className="mx-auto max-w-3xl backdrop-blur-sm bg-white/5 border border-white/10 rounded-2xl px-6 py-4 md:px-8 md:py-5 shadow-lg">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-wider mb-2" style={{ fontFamily: "var(--font-bebas-neue)" }}>Livestream</h1>
-            <p className="text-base md:text-lg font-medium text-blue-50/90">Watch courts live during Lakeshore Volleyfest</p>
-          </div>
-        </div>
-      </header>
+      <PageHeader 
+        title="Livestream"
+        subtitle="Watch courts live during Lakeshore Volleyfest"
+      />
 
       <main className="max-w-6xl mx-auto px-4 py-10">
         <div className="mb-6 flex flex-wrap items-center gap-3 justify-between">
@@ -54,7 +30,7 @@ export default function LivestreamPage() {
             href="https://www.youtube.com/@insideoutvolleyball"
             target="_blank"
             rel="noreferrer"
-            className="group inline-flex items-center gap-2 rounded-full border border-red-300 bg-linear-to-r from-red-600 to-red-500 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
+            className="group inline-flex items-center gap-2 rounded-full border border-red-300 bg-linear-to-r from-red-600 to-red-500 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
           >
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/30 shadow-inner">
               <svg
@@ -76,7 +52,7 @@ export default function LivestreamPage() {
               key={stream.court}
               type="button"
               onClick={() => setSelectedCourt(stream.court)}
-              className={`rounded-full border px-4 py-2 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 ${
+              className={`rounded-full border px-4 py-2 text-sm font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 ${
                 stream.court === activeStream?.court
                   ? "border-blue-500 bg-blue-600 text-white shadow"
                   : "border-blue-200 bg-white text-blue-800 hover:-translate-y-0.5 hover:shadow"

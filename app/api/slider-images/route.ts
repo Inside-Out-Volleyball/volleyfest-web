@@ -1,6 +1,9 @@
 import { list } from '@vercel/blob';
 import { NextResponse } from 'next/server';
 
+// Cache for 1 hour (3600 seconds)
+export const revalidate = 3600;
+
 export async function GET() {
   try {
     const { blobs } = await list({
@@ -14,7 +17,12 @@ export async function GET() {
       .map((blob) => blob.url)
       .sort();
 
-    return NextResponse.json({ images: sortedUrls });
+    const response = NextResponse.json({ images: sortedUrls });
+    
+    // Set cache headers: cache for 1 hour, stale-while-revalidate for 1 day
+    response.headers.set('Cache-Control', 's-maxage=3600, stale-while-revalidate=86400');
+    
+    return response;
   } catch (error) {
     console.error('Failed to fetch slider images:', error);
     return NextResponse.json({ images: [] }, { status: 500 });
