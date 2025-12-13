@@ -1,6 +1,9 @@
-import { waves, wavesDecided } from "@/app/data/waves";
+import { waves, wavesDecided, waveTimes } from "@/app/data/waves";
 
 export default function WavesTable() {
+  const getWaveTimeInfo = (start: string) => {
+    return waveTimes.find(wt => wt.wave === start);
+  };
   if (!wavesDecided) {
     return (
       <div className="mt-4 p-4 rounded-lg border border-blue-200 bg-blue-50 text-blue-900 font-semibold">
@@ -21,13 +24,30 @@ export default function WavesTable() {
             </tr>
           </thead>
           <tbody>
-            {waves.map((row) => (
-              <tr key={row.division} className="odd:bg-white even:bg-blue-50/30">
-                <td className="px-3 py-2 border-b border-blue-100 text-gray-900 font-semibold">{row.division}</td>
-                <td className="px-3 py-2 border-b border-blue-100 text-gray-800">{row.start}</td>
-                <td className="px-3 py-2 border-b border-blue-100 text-gray-600">{row.location ?? "TBD"}</td>
-              </tr>
-            ))}
+            {waves.map((row) => {
+              const waveInfo = getWaveTimeInfo(row.start);
+              return (
+                <tr key={row.division} className="odd:bg-white even:bg-blue-50/30">
+                  <td className="px-3 py-2 border-b border-blue-100 text-gray-900 font-semibold">{row.division}</td>
+                  <td className="px-3 py-2 border-b border-blue-100 text-gray-800">
+                    {waveInfo ? (
+                      <span 
+                        className={`inline-block px-3 py-1 rounded-full font-medium ${
+                          waveInfo.color === 'green' ? 'bg-green-100 text-green-800' : 
+                          waveInfo.color === 'blue' ? 'bg-blue-100 text-blue-800' : 
+                          'bg-gray-100 text-gray-800'
+                        }`}
+                      >
+                        {waveInfo.time}
+                      </span>
+                    ) : (
+                      row.start
+                    )}
+                  </td>
+                  <td className="px-3 py-2 border-b border-blue-100 text-gray-600">{row.location ?? "TBD"}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

@@ -101,7 +101,7 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-blue-300 rounded-lg overflow-hidden">
               <div className="p-4 bg-blue-50 font-bold border-r-2 border-blue-300 text-blue-900">REGISTRATION:</div>
-              <div className="p-4 bg-white text-black"><a href={tournamentData.registrationUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline transition-colors">{tournamentData.registrationDisplay}</a></div>
+              <div className="p-4 bg-white text-black font-bold"><a href={tournamentData.registrationUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline transition-colors">{tournamentData.registrationDisplay}</a></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-blue-300 rounded-lg overflow-hidden">
               <div className="p-4 bg-blue-50 font-bold border-r-2 border-blue-300 text-blue-900">RULES:</div>
