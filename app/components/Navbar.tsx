@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { tournamentData } from '@/app/data/tournamentData';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,8 +10,8 @@ export default function Navbar() {
   const navLinks = [
     { label: 'Home', href: '/' },
     { label: 'Tournament Info', href: '/tournament-information' },
-    { label: 'Schedule', href: 'https://results.advancedeventsystems.com/event/PTAwMDAwMzY5MTY90/home', external: true },
-    { label: 'Registration', href: 'https://advancedeventsystems.com/41019', external: true },
+    { label: 'Schedule', href: '/tournament-information#schedule' },
+    { label: 'Registration', href: tournamentData.registrationUrl, external: true },
   ];
 
   return (

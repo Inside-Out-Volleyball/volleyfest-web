@@ -1,42 +1,20 @@
 import Image from "next/image";
 import Script from "next/script";
-// import InstagramEmbed from "./components/InstagramEmbed";
 import JuicerInstagram from "./components/JuicerInstagram";
 import ImageSlider from "./components/ImageSlider";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import PageHeader from "./components/PageHeader";
 import { tournamentData } from "./data/tournamentData";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-linear-to-b from-gray-50 to-white">
       <Navbar />
-      {/* Header */}
-      <header className="relative overflow-hidden bg-linear-to-r from-blue-700 via-blue-800 to-blue-900 text-white shadow-lg">
-        <div className="absolute inset-0 opacity-30" aria-hidden="true">
-          <div className="absolute -left-20 top-[-10%] h-64 w-64 rounded-full bg-blue-400 blur-3xl"></div>
-          <div className="absolute right-[-5%] top-1/4 h-72 w-72 rounded-full bg-indigo-500 blur-3xl"></div>
-        </div>
-
-        <div className="relative max-w-6xl mx-auto px-4 py-6 md:py-8 text-center">
-          <div className="mx-auto mb-4 md:mb-5 flex justify-center">
-            <div className="relative w-32 h-32 md:w-40 md:h-40 drop-shadow-2xl">
-              <Image
-                src="/volleyfest-logo2.png"
-                alt="Lakeshore Volleyfest 2026"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-          </div>
-
-          <div className="mx-auto max-w-3xl backdrop-blur-sm bg-white/5 border border-white/10 rounded-2xl px-6 py-4 md:px-8 md:py-5 shadow-lg">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-wider mb-2" style={{ fontFamily: "var(--font-bebas-neue)" }}>Lakeshore Volleyfest</h1>
-            <p className="text-base md:text-lg font-medium text-blue-50/90">April 25 &amp; 26, 2026 · West Michigan</p>
-          </div>
-        </div>
-      </header>
+      <PageHeader 
+        title="Lakeshore Volleyfest"
+        subtitle={`${tournamentData.dates} · West Michigan`}
+      />
 
       <main className="max-w-7xl mx-auto px-4 py-8">
         {/* Image Slider */}
@@ -50,7 +28,7 @@ export default function Home() {
           />
           <Card
             title="Schedule"
-            link="https://results.advancedeventsystems.com/event/PTAwMDAwMzY5MTY90/home"
+            link="/tournament-information#schedule"
           />
           <Card
             title="Hotel Information"
@@ -58,15 +36,15 @@ export default function Home() {
           />
           <Card
             title="Tickets/Admission"
-            link="https://lakeshorevolleyfest.com/tournament-information/spectator-information/"
+            link="https://iplexsports.com/event/dli94fTSUUPUj5ko"
           />
           <Card
             title="Locations"
-            link="https://lakeshorevolleyfest.com/tournament-information/locations/"
+            link="/locations"
           />
           <Card
             title="Livestream"
-            link="https://lakeshorevolleyfest.com/court-1-2-livestream/"
+            link="/livestream"
           />
         </div>
 
@@ -100,7 +78,7 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-blue-300 rounded-lg overflow-hidden">
               <div className="p-4 bg-blue-50 font-bold border-r-2 border-blue-300 text-blue-900">REGISTRATION:</div>
-              <div className="p-4 bg-white text-black"><a href={tournamentData.registrationUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline transition-colors">{tournamentData.registrationDisplay}</a></div>
+              <div className="p-4 bg-white text-black font-bold"><a href={tournamentData.registrationUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline transition-colors">{tournamentData.registrationDisplay}</a></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-blue-300 rounded-lg overflow-hidden">
               <div className="p-4 bg-blue-50 font-bold border-r-2 border-blue-300 text-blue-900">RULES:</div>

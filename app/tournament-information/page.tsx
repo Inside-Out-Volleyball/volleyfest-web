@@ -2,55 +2,35 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import PageHeader from "../components/PageHeader";
+import WavesTable from "../components/WavesTable";
 import { tournamentData } from "../data/tournamentData";
 
 export default function TournamentInformation() {
   return (
     <div className="min-h-screen bg-linear-to-b from-gray-50 to-white">
       <Navbar />
-      {/* Header */}
-      <header className="relative overflow-hidden bg-linear-to-r from-blue-700 via-blue-800 to-blue-900 text-white shadow-lg">
-        <div className="absolute inset-0 opacity-30" aria-hidden="true">
-          <div className="absolute -left-20 top-[-10%] h-64 w-64 rounded-full bg-blue-400 blur-3xl"></div>
-          <div className="absolute right-[-5%] top-1/4 h-72 w-72 rounded-full bg-indigo-500 blur-3xl"></div>
-        </div>
-
-        <div className="relative max-w-6xl mx-auto px-4 py-6 md:py-8 text-center">
-          <div className="mx-auto mb-4 md:mb-5 flex justify-center">
-            <div className="relative w-32 h-32 md:w-40 md:h-40 drop-shadow-2xl">
-              <Image
-                src="/volleyfest-logo2.png"
-                alt="Lakeshore Volleyfest 2026"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-          </div>
-
-          <div className="mx-auto max-w-3xl backdrop-blur-sm bg-white/5 border border-white/10 rounded-2xl px-6 py-4 md:px-8 md:py-5 shadow-lg">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-wider mb-2" style={{ fontFamily: "var(--font-bebas-neue)" }}>Tournament Information</h1>
-            <p className="text-base md:text-lg font-medium text-blue-50/90">April 25 &amp; 26, 2026 · Michigan</p>
-          </div>
-        </div>
-      </header>
+      <PageHeader 
+        title="Tournament Information"
+        subtitle="April 25 & 26, 2026 · Michigan"
+      />
 
       <main className="max-w-4xl mx-auto px-4 py-12">
         {/* Quick Navigation Links */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
           <Link
-            href="#tournament-details"
+            href="#schedule"
             className="block p-4 bg-white border-2 border-blue-200 rounded-lg hover:shadow-lg hover:border-blue-400 transition-all text-center"
           >
-            <div className="text-lg font-bold text-blue-900 mb-1">Tournament Details</div>
-            <div className="text-sm text-gray-600">Dates, fees & entry info</div>
+            <div className="text-lg font-bold text-blue-900 mb-1">Schedule</div>
+            <div className="text-sm text-gray-600">Playing Waves & Schedule</div>
           </Link>
           <Link
-            href="#aau-information"
+            href="/locations"
             className="block p-4 bg-white border-2 border-blue-200 rounded-lg hover:shadow-lg hover:border-blue-400 transition-all text-center"
           >
-            <div className="text-lg font-bold text-blue-900 mb-1">AAU Information</div>
-            <div className="text-sm text-gray-600">Rules & requirements</div>
+            <div className="text-lg font-bold text-blue-900 mb-1">Locations</div>
+            <div className="text-sm text-gray-600">Playing Sites & Addresses</div>
           </Link>
           <Link
             href="#contact-information"
@@ -127,13 +107,35 @@ export default function TournamentInformation() {
           </div>
         </section>
 
+        {/* Schedule Section */}
+        <section id="schedule" className="bg-white border-2 border-blue-200 rounded-xl shadow-xl p-8 mb-12 scroll-mt-20">
+          <h2 className="text-2xl md:text-3xl font-bold text-blue-900 mb-6">Schedule / Playing Waves</h2>
+          <div className="space-y-4 text-gray-700">
+            <p>
+              View the latest court-by-court schedules and updates.
+            </p>
+            <a
+              href="https://results.advancedeventsystems.com/event/PTAwMDAwMzY5MTY90/home"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors"
+            >
+              2025 AES Results
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+            <WavesTable />
+          </div>
+        </section>
+
         {/* AAU Information Section */}
         <section id="aau-information" className="bg-white border-2 border-blue-200 rounded-xl shadow-xl p-8 mb-12 scroll-mt-20">
           <h2 className="text-2xl md:text-3xl font-bold text-blue-900 mb-6">AAU Information</h2>
 
           <div className="space-y-4 text-gray-700">
             <p>
-              The AAU Super Regional is a <strong>National AAU Sponsored Event</strong>. Winners in each age division will have all or part of their fee waived for AAU Nationals. The refund is a sliding scale based on 16 teams in each age group.
+              The AAU Super Regional is a <strong>National AAU Sponsored Event</strong>. Winners in each division (up to 4 divisions per age group) will have all or part of their fee waived for AAU Nationals. The Classic division winner will NOT be eligible. The refund is a sliding scale based on 16 teams in each age group.
             </p>
 
             <p>
@@ -151,11 +153,10 @@ export default function TournamentInformation() {
             </div>
 
             <p>
-              In order for PREMIER division winners to collect their reimbursement, the team must be registered for and compete in PREMIER division or a LOWER division at AAU Nationals. If the first place team has already won a free entry or does not accept the free entry, the free entry will go to the second place team.
+              Teams earning a free or discounted entry fee must contact volleyball@aausports.org before July 1st, 2026. Refund requests will not be accepted after July 1st, 2026. Winning teams WILL NOT automatically be refunded, nor will they be contacted by the National Office. Refunds will be issued after completion of the AAU National Tournament to teams who participated in the 2025 AAU National Tournament
             </p>
-
             <p>
-              If the entry deadline for AAU Nationals is prior to the AAU Super Regional, then winners who have entered and been accepted into the National Tournament will have their nationals entry fee refunded.
+              All teams must still enter the National Championships or Volleyball Festival by the entry deadline, regardless of the date of the Grand Prix or Super Regional. Spots will not be held for winning teams.
             </p>
           </div>
 

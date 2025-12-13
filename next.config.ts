@@ -1,13 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export',
   images: {
-    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "volleyfest.blob.core.windows.net",
+        hostname: "2mtrfo5jo8mxmvit.public.blob.vercel-storage.com",
       },
     ],
   },
