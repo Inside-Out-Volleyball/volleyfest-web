@@ -1,140 +1,61 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import Navbar from "@/app/components/Navbar";
-import Footer from "@/app/components/Footer";
-import PageHeader from "@/app/components/PageHeader";
+import GalleryClient from "./GalleryClient";
+import { list } from '@vercel/blob';
 
 type GalleryPageProps = {
   params: Promise<{ year: string }>;
 };
 
-export default function GalleryPage({ params }: GalleryPageProps) {
-  const [year, setYear] = useState<string>("");
-  const [images, setImages] = useState<string[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+// Revalidate every hour
+export const revalidate = 3600;
 
-  useEffect(() => {
-    params.then((resolvedParams) => {
-      setYear(resolvedParams.year);
-      fetch(`/api/gallery?year=${resolvedParams.year}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setImages(data.images || []);
-          setLoading(false);
-        })
-        .catch((err) => {
-          console.error("Failed to load gallery:", err);
-          setLoading(false);
-        });
+// Generate static pages for all available years at build time
+export async function generateStaticParams() {
+  try {
+    const { blobs } = await list({
+      prefix: 'gallery/',
+      token: process.env.vfest_READ_WRITE_TOKEN!,
     });
-  }, [params]);
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-linear-to-b from-gray-50 to-white">
-        <Navbar />
-        <PageHeader title={`Gallery ${year}`} subtitle="Loading photos..." />
-        <main className="max-w-7xl mx-auto px-4 py-10">
-          <div className="text-center text-gray-500">Loading gallery...</div>
-        </main>
-        <Footer />
-      </div>
-    );
+    const yearPaths = new Set<string>();
+    blobs.forEach((blob) => {
+      const match = blob.pathname.match(/^gallery\/(\d{4})\//); 
+      if (match) {
+        yearPaths.add(match[1]);
+      }
+    });
+
+    const years = Array.from(yearPaths);
+    return years.map((year: string) => ({
+      year: year,
+    }));
+  } catch (error) {
+    console.error('Failed to generate static params:', error);
+    return [];
   }
+}
 
-  if (images.length === 0) {
-    return (
-      <div className="min-h-screen bg-linear-to-b from-gray-50 to-white">
-        <Navbar />
-        <PageHeader title={`Gallery ${year}`} subtitle="No photos available" />
-        <main className="max-w-7xl mx-auto px-4 py-10">
-          <div className="text-center text-gray-600">
-            <p>No photos found for {year}.</p>
-          </div>
-        </main>
-        <Footer />
-      </div>
-    );
+async function getGalleryImages(year: string) {
+  try {
+    const { blobs } = await list({
+      prefix: `gallery/${year}/`,
+      token: process.env.vfest_READ_WRITE_TOKEN!,
+    });
+
+    const images = blobs
+      .filter((blob) => !blob.pathname.endsWith('/'))
+      .map((blob) => blob.url)
+      .sort();
+
+    return images;
+  } catch (error) {
+    console.error('Failed to load gallery:', error);
+    return [];
   }
+}
 
-  return (
-    <div className="min-h-screen bg-linear-to-b from-gray-50 to-white">
-      <Navbar />
-      <PageHeader
-        title={`Gallery ${year}`}
-        subtitle={`Photos from Lakeshore Volleyfest ${year}`}
-      />
+export default async function GalleryPage({ params }: GalleryPageProps) {
+  const { year } = await params;
+  const images = await getGalleryImages(year);
 
-      <main className="max-w-7xl mx-auto px-4 py-10">
-        <Link
-          href="/gallery"
-          className="inline-flex items-center gap-2 mb-8 px-6 py-3 bg-white border-2 border-blue-200 text-blue-700 hover:border-blue-400 hover:text-blue-900 hover:shadow-lg font-semibold rounded-lg transition-all duration-200"
-        >
-          <svg
-            className="w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-          Back to Gallery
-        </Link>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {images.map((image, index) => (
-            <button
-              key={index}
-              onClick={() => setSelectedImage(image)}
-              className="relative aspect-square overflow-hidden rounded-lg border-2 border-blue-200 hover:border-blue-400 hover:shadow-xl transition-all cursor-pointer group"
-            >
-              <Image
-                src={image}
-                alt={`Gallery photo ${index + 1}`}
-                fill
-                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-            </button>
-          ))}
-        </div>
-      </main>
-
-      {/* Lightbox */}
-      {selectedImage && (
-        <div
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
-        >
-          <button
-            onClick={() => setSelectedImage(null)}
-            className="absolute top-4 right-4 text-white text-4xl hover:text-gray-300 z-10"
-            aria-label="Close"
-          >
-            ×
-          </button>
-          <div className="relative w-full h-full max-w-6xl max-h-[90vh]">
-            <Image
-              src={selectedImage}
-              alt="Full size photo"
-              fill
-              sizes="90vw"
-              className="object-contain"
-              onClick={(e) => e.stopPropagation()}
-            />
-          </div>
-        </div>
-      )}
-
-      <Footer />
-    </div>
-  );
+  return <GalleryClient year={year} images={images} />;
 }

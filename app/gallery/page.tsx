@@ -1,27 +1,36 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
 import PageHeader from "@/app/components/PageHeader";
+import { list } from '@vercel/blob';
 
-export default function GalleryIndexPage() {
-  const [years, setYears] = useState<string[]>([]);
-  const [loading, setLoading] = useState(true);
+// Revalidate every hour
+export const revalidate = 3600;
 
-  useEffect(() => {
-    fetch("/api/gallery")
-      .then((res) => res.json())
-      .then((data) => {
-        setYears(data.years || []);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Failed to load gallery years:", err);
-        setLoading(false);
-      });
-  }, []);
+async function getGalleryYears() {
+  try {
+    const { blobs } = await list({
+      prefix: 'gallery/',
+      token: process.env.vfest_READ_WRITE_TOKEN!,
+    });
+
+    const yearPaths = new Set<string>();
+    blobs.forEach((blob) => {
+      const match = blob.pathname.match(/^gallery\/(\d{4})\//); 
+      if (match) {
+        yearPaths.add(match[1]);
+      }
+    });
+
+    return Array.from(yearPaths).sort().reverse();
+  } catch (error) {
+    console.error('Failed to load gallery years:', error);
+    return [];
+  }
+}
+
+export default async function GalleryIndexPage() {
+  const years = await getGalleryYears();
 
   return (
     <div className="min-h-screen bg-linear-to-b from-gray-50 to-white">
@@ -32,15 +41,13 @@ export default function GalleryIndexPage() {
       />
 
       <main className="max-w-4xl mx-auto px-4 py-10">
-        {loading ? (
-          <div className="text-center text-gray-500">Loading galleries...</div>
-        ) : years.length === 0 ? (
+        {years.length === 0 ? (
           <div className="text-center text-gray-600">
             <p>No galleries available yet. Check back soon!</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {years.map((year) => (
+            {years.map((year: string | number) => (
               <Link
                 key={year}
                 href={`/gallery/${year}`}
