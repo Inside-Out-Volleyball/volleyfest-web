@@ -10,7 +10,8 @@ export default function Navbar() {
   const navLinks = [
     { label: 'Home', href: '/' },
     { label: 'Tournament Info', href: '/tournament-information' },
-    { label: 'Schedule', href: '/tournament-information#schedule' },
+    // { label: 'Schedule', href: '/tournament-information#schedule' },
+    { label: 'Gallery', href: '/gallery' },
     { label: 'Registration', href: tournamentData.registrationUrl, external: true },
   ];
 
