@@ -3,17 +3,18 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
+const SLIDER_IMAGES = [
+  'https://2mtrfo5jo8mxmvit.public.blob.vercel-storage.com/frontpage-slider/frontpage%20%281%29.jpg',
+  'https://2mtrfo5jo8mxmvit.public.blob.vercel-storage.com/frontpage-slider/frontpage%20%282%29.jpg',
+  'https://2mtrfo5jo8mxmvit.public.blob.vercel-storage.com/frontpage-slider/frontpage%20%283%29.jpg',
+  'https://2mtrfo5jo8mxmvit.public.blob.vercel-storage.com/frontpage-slider/frontpage%20%284%29.jpg',
+  'https://2mtrfo5jo8mxmvit.public.blob.vercel-storage.com/frontpage-slider/frontpage%20%285%29.jpg',
+];
+
 export default function ImageSlider() {
-  const [slides, setSlides] = useState<string[]>([]);
+  const [slides] = useState<string[]>(SLIDER_IMAGES);
   const [current, setCurrent] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
-
-  useEffect(() => {
-    fetch('/api/slider-images')
-      .then((res) => res.json())
-      .then((data) => setSlides(data.images || []))
-      .catch((err) => console.error('Failed to load slider images:', err));
-  }, []);
 
   useEffect(() => {
     if (!autoPlay) return;
