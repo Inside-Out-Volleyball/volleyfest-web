@@ -4,10 +4,10 @@ export const tournamentData = {
   dates: "April 25 & 26, 2026",
   location: "Grand Rapids, MI",
   hostedBy: "Inside Out Volleyball Club",
-  ageGroups: "Girls 12-18",
+  ageGroups: "Girls 11-18",
   entryFees: {
-    older: { age: "13-18", cost: "$550.00" },
-    younger: { age: "12's", cost: "$480.00" },
+    older: { age: "13-18's", cost: "$550.00" },
+    younger: { age: "11-12's", cost: "$480.00" },
   },
   entryDeadline: "April 6, 2026 (POSTMARK)",
   registrationUrl: "https://advancedeventsystems.com/41019",
