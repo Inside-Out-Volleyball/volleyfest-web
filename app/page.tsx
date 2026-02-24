@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Script from "next/script";
-import JuicerInstagram from "./components/JuicerInstagram";
 import ImageSlider from "./components/ImageSlider";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import PageHeader from "./components/PageHeader";
 import { tournamentData } from "./data/tournamentData";
+import InstagramEmbed from "./components/InstagramEmbed";
 
 export default function Home() {
   return (
@@ -133,8 +133,8 @@ export default function Home() {
 
         {/* Instagram Embed - Below main content */}
         <section className="mt-12">
-          <div className="bg-white border-2 border-blue-200 rounded-xl shadow-xl p-4">
-            <JuicerInstagram />
+          <div>
+            <InstagramEmbed/>
           </div>
         </section>
       </main>
