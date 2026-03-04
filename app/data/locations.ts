@@ -20,7 +20,7 @@ export const locations: Location[] = [
   },
   {
     name: "Grand Valley State University",
-    courts: "37–44 (Fieldhouse and Rec Center)",
+    courts: "37–42 (Fieldhouse and Rec Center)",
     addressLines: ["4249 W Ravine Center Dr", "Allendale, MI 49401"],
     seatingAvailable: true,
     seatingText: "Bleachers – outside chairs are allowed as well",
@@ -30,7 +30,7 @@ export const locations: Location[] = [
 
   {
     name: "Impact Dynamic",
-    courts: "45–52",
+    courts: "43–50",
     addressLines: ["2830 Port Sheldon St", "Hudsonville, MI 49426"],
     seatingAvailable: true,
     seatingText: "Chairs provided – NO outside chairs",
@@ -39,7 +39,7 @@ export const locations: Location[] = [
   },
   {
     name: "Aquinas College",
-    courts: "53–57",
+    courts: "51–56",
     addressLines: ["1580 Fulton St E", "Grand Rapids, MI 49506"],
     seatingAvailable: true,
     seatingText: "Bleachers – NO outside chairs",
@@ -48,7 +48,7 @@ export const locations: Location[] = [
   },
   {
     name: "MSA Sport Spot",
-    courts: "58–61",
+    courts: "57–60",
     addressLines: ["3701 32nd St SE", "Grand Rapids, MI 49512"],
     seatingAvailable: true,
     seatingText: "Bleachers",
@@ -57,7 +57,7 @@ export const locations: Location[] = [
   },
   {
     name: "East Kentwood HS",
-    courts: "62–65",
+    courts: "61–64",
     addressLines: ["6230 Kalamazoo Ave SE", "Kentwood, MI 49508"],
     seatingAvailable: true,
     seatingText: "Bleachers – outside chairs are allowed as well",
@@ -66,7 +66,7 @@ export const locations: Location[] = [
   },
   {
     name: "East Kentwood Freshman Campus",
-    courts: "66–67",
+    courts: "65–66",
     addressLines: ["6170 Valley Ln Dr SE", "Kentwood, MI 49508"],
     seatingAvailable: true,
     seatingText: "Bleachers – outside chairs are allowed as well",
@@ -75,18 +75,35 @@ export const locations: Location[] = [
   },
   {
     name: "Byron Center HS",
-    courts: "68–71",
+    courts: "67–70",
     addressLines: ["8500 Burlingame Ave SW", "Byron Center, MI 49315"],
     seatingAvailable: true,
     seatingText: "Bleachers – NO outside chairs",
     apparel: true,
     concessions: false,
   },
-
+  {
+    name: "Special Olympics of Michigan",
+    courts: "71-73",
+    addressLines: ["160 68th SW", "Grand Rapids, MI 49548"],
+    seatingAvailable: true,
+    seatingText: "Bleachers",
+    apparel: false,
+    concessions: true,
+  },
   {
     name: "Grandville High School",
-    courts: "72–75",
+    courts: "74–77",
     addressLines: ["4700 Canal Ave SW", "Grandville, MI 49418"],
+    seatingAvailable: true,
+    seatingText: "Bleachers",
+    apparel: false,
+    concessions: false,
+  },
+  {
+    name: "Grand Rapids Community College",
+    courts: "77–82",
+    addressLines: ["143 Bostwick Ave NE", "Grand Rapids, MI 49503"],
     seatingAvailable: true,
     seatingText: "Bleachers",
     apparel: false,
