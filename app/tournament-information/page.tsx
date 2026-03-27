@@ -196,7 +196,7 @@ export default function TournamentInformation() {
           </h2>
           <div className="space-y-4 text-gray-700">
             <p>View the latest court-by-court schedules and updates.</p>
-            <a
+            {/* <a
               href="https://results.advancedeventsystems.com/event/PTAwMDAwMzY5MTY90/home"
               target="_blank"
               rel="noopener noreferrer"
@@ -217,7 +217,7 @@ export default function TournamentInformation() {
                   d="M9 5l7 7-7 7"
                 />
               </svg>
-            </a>
+            </a> */}
             <WavesTable />
           </div>
         </section>
