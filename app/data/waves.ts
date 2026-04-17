@@ -12,7 +12,7 @@ export const waveTimes = [
 ];
 
 export const waves: Wave[] = [
-  { division: "11 Club", start: "AM", location: "MVP Sport Spot" },
+  { division: "11 Club", start: "AM", location: "MSA Sport Spot" },
   { division: "12 Classic", start: "AM", location: "Impact Dynamic" },
   { division: "12 Club", start: "AM", location: "DeVos/Northview" },
   { division: "12 Premier/Open", start: "AM", location: "DeVos Place" },
@@ -20,7 +20,7 @@ export const waves: Wave[] = [
   { division: "13 Aspire", start: "PM", location: "SOMI/DeVos" },
   { division: "13 Club", start: "PM", location: "Byron Center/DeVos" },
   { division: "13 Premier/Open", start: "PM", location: "DeVos Place" },
-  { division: "14 Classic Blue", start: "PM", location: "MVP Sport Spot/DeVos" },
+  { division: "14 Classic Blue", start: "PM", location: "MSA Sport Spot/DeVos" },
   { division: "14 Classic Red", start: "PM", location: "Impact Dynamic" },
   { division: "14 Aspire", start: "PM", location: "Jenison/DeVos" },
   { division: "14 Club", start: "PM", location: "Aquinas/Devos" },
