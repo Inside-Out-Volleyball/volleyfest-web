@@ -26,9 +26,13 @@ export default function Home() {
             title="Tournament Information"
             link="/tournament-information"
           />
-          <Card
+          {/* <Card
             title="Schedule"
             link="/tournament-information#schedule"
+          /> */}
+          <Card
+            title="AES Schedule"
+            link={tournamentData.scheduleUrl}
           />
           <Card
             title="Hotel Information"

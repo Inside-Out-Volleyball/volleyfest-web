@@ -196,13 +196,13 @@ export default function TournamentInformation() {
           </h2>
           <div className="space-y-4 text-gray-700">
             <p>View the latest court-by-court schedules and updates.</p>
-            {/* <a
-              href="https://results.advancedeventsystems.com/event/PTAwMDAwMzY5MTY90/home"
+            <a
+              href={tournamentData.scheduleUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors"
             >
-              2025 AES Results
+              2026 AES Schedule & Results
               <svg
                 className="w-4 h-4"
                 fill="none"
@@ -217,7 +217,7 @@ export default function TournamentInformation() {
                   d="M9 5l7 7-7 7"
                 />
               </svg>
-            </a> */}
+            </a>
             <WavesTable />
           </div>
         </section>
