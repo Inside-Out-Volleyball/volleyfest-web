@@ -12,6 +12,7 @@ export const tournamentData = {
   entryDeadline: "April 6, 2026 (POSTMARK)",
   registrationUrl: "https://advancedeventsystems.com/41019",
   registrationDisplay: "www.advancedeventsystems.com",
+  scheduleUrl: "https://results.advancedeventsystems.com/event/PTAwMDAwNDEwMTk90/home",
   rules: "Tournament will follow current AAU Rules",
   entryFeesPayableTo: "Inside Out Volleyball",
   tournamentGuideUrl: "https://2mtrfo5jo8mxmvit.public.blob.vercel-storage.com/tournament-guides/2026%20Tournament%20Information.pdf",
