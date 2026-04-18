@@ -79,7 +79,7 @@ export const locations: Location[] = [
     addressLines: ["8500 Burlingame Ave SW", "Byron Center, MI 49315"],
     seatingAvailable: true,
     seatingText: "Bleachers – outside chairs are allowed",
-    apparel: true,
+    apparel: false,
     concessions: false,
   },
   {
@@ -115,7 +115,7 @@ export const locations: Location[] = [
     addressLines: ["4451 Hunsberger Ave NE", "Grand Rapids, MI 49525"],
     seatingAvailable: true,
     seatingText: "Bleachers - outside chairs are allowed",
-    apparel: false,
+    apparel: true,
     concessions: true,
   },
 ];
