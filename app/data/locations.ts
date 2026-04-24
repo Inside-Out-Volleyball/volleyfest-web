@@ -4,6 +4,7 @@ export type Location = {
   addressLines: string[];
   seatingAvailable: boolean;
   seatingText: string;
+  notes?: string;
   apparel: boolean;
   concessions: boolean;
 };
@@ -97,6 +98,7 @@ export const locations: Location[] = [
     addressLines: ["2140 Bauer Rd", "Jenison, MI 49428"],
     seatingAvailable: true,
     seatingText: "Bleachers",
+    notes: "Please enter through the cafeteria doors.",
     apparel: false,
     concessions: false,
   },

@@ -51,6 +51,12 @@ export default function LocationsPage() {
                 ))}
               </div>
 
+              {loc.notes && (
+                <p className="text-gray-800 font-semibold">
+                  *Notes: <span className="font-bold">{loc.notes}</span>
+                </p>
+              )}
+
               <div className="grid grid-cols-1 gap-3">
                 <div className="grid grid-cols-1 border-2 border-blue-300 rounded-lg overflow-hidden">
                   <div className="p-3 bg-blue-50 font-bold text-blue-900">Seating</div>
