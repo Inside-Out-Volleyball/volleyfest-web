@@ -31,17 +31,21 @@ export default function Home() {
             link="/tournament-information#schedule"
           /> */}
           <Card
-            title="AES Schedule"
+            title="Register for 2027"
+            link={tournamentData.registrationUrl}
+          />
+          <Card
+            title="2026 Results"
             link={tournamentData.scheduleUrl}
           />
           <Card
             title="Hotel Information"
             link="https://www.teamtravelsource.com/volleyball_lander/lakeshorevolleyfest/"
           />
-          <Card
+          {/* <Card
             title="Tickets/Admission"
             link="https://iplexsports.com/event/dli94fTSUUPUj5ko"
-          />
+          /> */}
           <Card
             title="Locations"
             link="/locations"
